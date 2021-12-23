@@ -15,19 +15,26 @@ class UnderwaterAdventure(MycroftSkill):
         self.speak(parse_input('look').replace('\n', '. '),
                    expect_response=True)
 
+    def handle_game_input(self, utterance):
+        if utterance not in self.translate_list('quit'):
+            game_response = parse_input(utterance)
+            if game_response:
+                self.speak(game_response, expect_response=True)
+            else:
+                self.speak_dialog("didnt.understand")
+            return True
+        else:
+            self.started = False
+            self.speak_dialog("leave.game")
+            return True
+
     def converse(self, utterances, lang):
-        self.log.info('CONVERSE!!!!')
-        self.log.info(utterances)
+        self.log.debug(utterances)
         utt = utterances[0] if utterances else ''
         if self.started:
-            if utt != 'quit':
-                self.speak(parse_input(utt), expect_response=True)
-                return True
-            else:
-                self.started = False
-                return True
-
-        return False
+            return self.handle_game_input(utt)
+        else:
+            return False
 
 
 def create_skill():
