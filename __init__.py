@@ -1,14 +1,15 @@
-from mycroft import MycroftSkill, intent_file_handler
-
+from ovos_workshop.decorators import intent_handler
+from ovos_workshop.skills import OVOSSkill
 from underwater_adventure import parse_input
 
 
-class UnderwaterAdventure(MycroftSkill):
-    def __init__(self):
-        super().__init__()
+class UnderwaterAdventure(OVOSSkill):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.started = False
 
-    @intent_file_handler('adventure.underwater.intent')
+    @intent_handler('adventure.underwater.intent')
     def handle_adventure_underwater(self, message):
         self.speak_dialog('adventure.underwater')
         self.started = True
@@ -35,7 +36,3 @@ class UnderwaterAdventure(MycroftSkill):
             return self.handle_game_input(utt)
         else:
             return False
-
-
-def create_skill():
-    return UnderwaterAdventure()
