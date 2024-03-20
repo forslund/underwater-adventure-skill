@@ -1,4 +1,4 @@
-# <img src="https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/robot.svg" card_color="#40DBB0" width="50" height="50" style="vertical-align:bottom"/> Underwater Adventure
+# <img src="https://cdn0.iconfinder.com/data/icons/man-geologist-research-specimen/358/species-researcher-003-512.png" card_color="#40DBB0" width="50" height="50" style="vertical-align:bottom"/> Underwater Adventure
 A small adventure game
 
 ## About

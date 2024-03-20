@@ -37,3 +37,4 @@ class UnderwaterAdventure(UniversalSkill):
             return self.handle_game_input(utt)
         else:
             return False
+
