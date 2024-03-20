@@ -1,0 +1,23 @@
+{
+  "skill_id": "ovos-skill-underwater-adventure.forslund",
+  "source": "https://github.com/OVOSHatchery/ovos-skill-underwater-adventure",
+  "package_name": "ovos-skill-underwater-adventure",
+  "extra_plugins": {
+    "core": [],
+    "PHAL": [],
+    "listener": [],
+    "audio": [],
+    "media": [],
+    "gui": []
+  },
+  "icon": "https://cdn0.iconfinder.com/data/icons/man-geologist-research-specimen/358/species-researcher-003-512.png",
+  "images": [],
+  "name": "Underwater Adventure",
+  "description": "You're trapped inside a sunken ship. Explore your surroundings and find the tools needed to escape this underwater prison.",
+  "examples": [
+    "Start the underwater adventure",
+    "Let us dive to the ship",
+    "Play underwater adventure"
+  ],
+  "tags": ["game", "adventure", "interactive fiction", "entertainment"]
+}

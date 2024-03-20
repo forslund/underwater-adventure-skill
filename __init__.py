@@ -1,14 +1,16 @@
-from mycroft import MycroftSkill, intent_file_handler
-
+from ovos_workshop.decorators import intent_handler
+from ovos_workshop.skills.auto_translatable import UniversalSkill
 from underwater_adventure import parse_input
 
 
-class UnderwaterAdventure(MycroftSkill):
-    def __init__(self):
-        super().__init__()
+class UnderwaterAdventure(UniversalSkill):
+
+    def __init__(self, *args, **kwargs):
+        # game is english only, apply bidirectional translation
+        super().__init__(internal_language="en-us", *args, **kwargs)
         self.started = False
 
-    @intent_file_handler('adventure.underwater.intent')
+    @intent_handler('adventure.underwater.intent')
     def handle_adventure_underwater(self, message):
         self.speak_dialog('adventure.underwater')
         self.started = True
@@ -22,13 +24,13 @@ class UnderwaterAdventure(MycroftSkill):
                 self.speak(game_response, expect_response=True)
             else:
                 self.speak_dialog("didnt.understand")
-            return True
         else:
             self.started = False
             self.speak_dialog("leave.game")
-            return True
+        return True
 
-    def converse(self, utterances, lang):
+    def converse(self, message):
+        utterances = message.data["utterances"]
         self.log.debug(utterances)
         utt = utterances[0] if utterances else ''
         if self.started:
@@ -36,6 +38,3 @@ class UnderwaterAdventure(MycroftSkill):
         else:
             return False
 
-
-def create_skill():
-    return UnderwaterAdventure()
